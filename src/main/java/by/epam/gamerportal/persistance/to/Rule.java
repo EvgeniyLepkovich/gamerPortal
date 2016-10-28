@@ -3,6 +3,7 @@ package by.epam.gamerportal.persistance.to;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "rule")
-public @Data class Rule {
+public @Data class Rule implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
