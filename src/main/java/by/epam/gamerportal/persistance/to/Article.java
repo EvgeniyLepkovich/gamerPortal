@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by Yayheniy_Lepkovich on 10/31/2016.
@@ -26,9 +27,19 @@ public @Data class Article implements Serializable {
 
     @ManyToOne
     private Section section;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name = "ArticleTag",
             joinColumns = @JoinColumn(name="articleId", referencedColumnName="id"),
             inverseJoinColumns = @JoinColumn(name="tagId", referencedColumnName = "id"))
     private Tag tag;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Comment> comments;
+
+    @ManyToMany
+    @JoinTable(name = "ArticleAccount",
+            joinColumns = @JoinColumn(name="articleId", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="accountId", referencedColumnName = "id"))
+    private Set<Account> accounts;
 }

@@ -19,6 +19,8 @@ public @Data class Comment {
     @Column(name = "commentText", nullable = false)
     private String commentText;
 
-//    @ManyToOne()
-//    private Account account;
+    @ManyToOne
+    private Account account;
+    @ManyToOne
+    private Article article;
 }

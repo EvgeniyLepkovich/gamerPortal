@@ -24,13 +24,17 @@ public @Data class Account implements Serializable {
     private String password;
     @Column(name = "mail", nullable = false)
     private String mail;
+
     @ManyToMany
     @JoinTable(name="AccountRole",
             joinColumns = @JoinColumn(name="accountId", referencedColumnName="ID"),
             inverseJoinColumns = @JoinColumn(name="roleId", referencedColumnName="ID")
     )
     private Set<Role> roles;
+    @ManyToMany(mappedBy = "accounts")
+    private Set<Article> articles;
 
-
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Comment> comments;
 
 }
