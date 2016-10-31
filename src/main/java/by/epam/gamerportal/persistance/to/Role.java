@@ -22,6 +22,11 @@ public @Data class Role implements Serializable {
     private String description;
 
     @ManyToMany
-    @JoinTable(name = "role_rule")
+    @JoinTable(name="RoleRule",
+            joinColumns=
+            @JoinColumn(name="RoleId", referencedColumnName="ID"),
+            inverseJoinColumns=
+            @JoinColumn(name="RuleId", referencedColumnName="ID")
+    )
     private Set<Rule> ruleSet;
 }
