@@ -20,7 +20,6 @@ public @Data class Role implements Serializable {
     private String nameRole;
     @Column(name = "description")
     private String description;
-
     @ManyToMany
     @JoinTable(name="RoleRule",
             joinColumns=
