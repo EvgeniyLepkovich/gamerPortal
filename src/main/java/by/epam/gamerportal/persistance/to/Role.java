@@ -28,4 +28,6 @@ public @Data class Role implements Serializable {
             @JoinColumn(name="RuleId", referencedColumnName="ID")
     )
     private Set<Rule> ruleSet;
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "rules")
+    private Set<Account> accounts;
 }
