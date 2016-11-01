@@ -15,6 +15,8 @@ public @Data class Profile implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @OneToOne(optional = false, mappedBy="profile")
+    public Account acount;
     @Column(name = "name", nullable = false)
     private String name;
     @Column(name = "surname", nullable = false)

@@ -24,7 +24,9 @@ public @Data class Account implements Serializable {
     private String password;
     @Column(name = "mail", nullable = false)
     private String mail;
-
+    @OneToOne(optional = false)
+    @JoinColumn(name="profileID", unique = true, nullable = false)
+    private Profile profile;
     @ManyToMany
     @JoinTable(name="AccountRole",
             joinColumns = @JoinColumn(name="accountId", referencedColumnName="ID"),
