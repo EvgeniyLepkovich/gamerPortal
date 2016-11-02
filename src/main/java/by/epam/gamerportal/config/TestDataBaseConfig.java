@@ -1,5 +1,7 @@
 package by.epam.gamerportal.config;
 
+import by.epam.gamerportal.persistance.dao.impl.SectionDao;
+import by.epam.gamerportal.service.impl.SectionService;
 import org.hibernate.ejb.HibernatePersistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -28,12 +30,22 @@ public class TestDataBaseConfig {
     private static final String PROPERTY_NAME_DATABASE_DRIVER = "com.mysql.jdbc.Driver";
     private static final String PROPERTY_NAME_DATABASE_URL = "jdbc:mysql://localhost:3306/testgameportal";
     private static final String PROPERTY_NAME_DATABASE_USERNAME = "EvgeniyL";
-    private static final String PROPERTY_NAME_DATABASE_PASSWORD = "8624A85Fene4ka";
+    private static final String PROPERTY_NAME_DATABASE_PASSWORD = "8624A85";
 
     private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "org.hibernate.dialect.MySQLDialect";
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "true";
-    private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "by.epam.gamerportal.persistance";
+    private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "by.epam.gamerportal";
     private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = "create-drop";
+
+//    @Bean
+//    public SectionService sectionService(){
+//        return new SectionService();
+//    }
+//
+//    @Bean
+//    public SectionDao sectionDao(){
+//        return new SectionDao();
+//    }
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -41,7 +53,7 @@ public class TestDataBaseConfig {
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistence.class);
         entityManagerFactoryBean.setPackagesToScan(PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN);
-
+//        entityManagerFactoryBean.setPackagesToScan(new String[]{"by.epam.gamerportal.persistance.to", "by.epam.gamerportal.persistance.dao", "by.epam.gamerportal.service"});
         entityManagerFactoryBean.setJpaProperties(hibernateProp());
 
         return entityManagerFactoryBean;

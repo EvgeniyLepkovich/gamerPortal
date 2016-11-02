@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 @Repository
-public abstract class JpaDao<T extends Serializable> implements IJpaDao<T>{
+public abstract class JpaDao<T> implements IJpaDao<T>{
     @Setter @Getter
     @PersistenceContext
     private EntityManager entityManager;

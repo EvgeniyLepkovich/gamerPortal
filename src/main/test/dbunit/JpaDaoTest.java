@@ -3,6 +3,7 @@ package dbunit;
 import by.epam.gamerportal.config.TestDataBaseConfig;
 import by.epam.gamerportal.persistance.dao.impl.SectionDao;
 import by.epam.gamerportal.persistance.to.Section;
+import by.epam.gamerportal.service.impl.SectionService;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.DatabaseTearDown;
@@ -40,22 +41,19 @@ import org.springframework.transaction.annotation.Transactional;
 public class JpaDaoTest{
 
     @Autowired
-    private SectionDao sectionDao;
+    private SectionService sectionService;
 
     public JpaDaoTest() {
-
     }
 
     @Test
     @DatabaseSetup(value = "/data/section/section-data.xml")
     public void testFindById(){
-        Section section = (Section) sectionDao.findById(1);
+        Section section = sectionService.findById(1);
         Assert.assertEquals("CS:GO", section.getSectionName());
     }
 
     @Test
-    @Transactional
-    @Rollback(false)
     @DatabaseSetup(value = "/data/section/section-data.xml")
     @ExpectedDatabase(value = "/data/section/section-expected-add.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void testAdd() throws Exception {
@@ -63,14 +61,13 @@ public class JpaDaoTest{
         section.setParentId(0);
         section.setSectionName("LOL");
         section.setDescription("");
-        sectionDao.add(section);
+        sectionService.add(section);
     }
 
     @Test
-    @Transactional
     @DatabaseSetup(value = "/data/section/section-data.xml")
     @ExpectedDatabase(value = "/data/section/section-expected-remove.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void testDeleteById() throws Exception{
-        sectionDao.deleteById(2);
+        sectionService.deleteById(2);
     }
 }
