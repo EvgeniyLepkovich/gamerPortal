@@ -1,14 +1,20 @@
 package by.epam.gamerportal.config;
 
 import org.hibernate.ejb.HibernatePersistence;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -22,11 +28,11 @@ public class TestDataBaseConfig {
     private static final String PROPERTY_NAME_DATABASE_DRIVER = "com.mysql.jdbc.Driver";
     private static final String PROPERTY_NAME_DATABASE_URL = "jdbc:mysql://localhost:3306/testgameportal";
     private static final String PROPERTY_NAME_DATABASE_USERNAME = "EvgeniyL";
-    private static final String PROPERTY_NAME_DATABASE_PASSWORD = "8624A85";
+    private static final String PROPERTY_NAME_DATABASE_PASSWORD = "8624A85Fene4ka";
 
     private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "org.hibernate.dialect.MySQLDialect";
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "true";
-    private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "by.epam.gamerportal";
+    private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "by.epam.gamerportal.persistance";
     private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = "create-drop";
 
     @Bean
@@ -45,7 +51,7 @@ public class TestDataBaseConfig {
     public JpaTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
-
+        transactionManager.setDataSource(dataSource());
         return transactionManager;
     }
 
@@ -68,5 +74,4 @@ public class TestDataBaseConfig {
         properties.put("hibernate.hbm2ddl.auto", PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO);
         return properties;
     }
-
 }

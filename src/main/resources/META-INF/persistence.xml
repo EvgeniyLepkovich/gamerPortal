@@ -19,29 +19,9 @@
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/gamePortal"/>
             <property name="hibernate.connection.username" value="EvgeniyL"/>
-            <property name="hibernate.connection.password" value="8624A85"/>
+            <property name="hibernate.connection.password" value="8624A85Fene4ka"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
-
-    <!--<persistence-unit name="TEST" transaction-type="RESOURCE_LOCAL">-->
-        <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
-        <!--<class>by.epam.gamerportal.persistance.to.Section</class>-->
-        <!--<class>by.epam.gamerportal.persistance.to.Account</class>-->
-        <!--<class>by.epam.gamerportal.persistance.to.Article</class>-->
-        <!--<class>by.epam.gamerportal.persistance.to.Comment</class>-->
-        <!--<class>by.epam.gamerportal.persistance.to.Profile</class>-->
-        <!--<class>by.epam.gamerportal.persistance.to.Role</class>-->
-        <!--<class>by.epam.gamerportal.persistance.to.Rule</class>-->
-        <!--<class>by.epam.gamerportal.persistance.to.Tag</class>-->
-        <!--<properties>-->
-            <!--<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>-->
-            <!--<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/gamePortal"/>-->
-            <!--<property name="hibernate.connection.username" value="EvgeniyL"/>-->
-            <!--<property name="hibernate.connection.password" value="8624A85"/>-->
-            <!--<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>-->
-            <!--<property name="hibernate.hbm2ddl.auto" value="create-drop"/>-->
-        <!--</properties>-->
-    <!--</persistence-unit>-->
 </persistence>

@@ -2,6 +2,7 @@ package junit;
 
 import by.epam.gamerportal.config.AppContext;
 import by.epam.gamerportal.persistance.dao.impl.SectionDao;
+import by.epam.gamerportal.persistance.exception.DaoException;
 import by.epam.gamerportal.persistance.to.Section;
 import by.epam.gamerportal.service.impl.SectionService;
 import org.junit.Test;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.util.List;
@@ -29,5 +31,14 @@ public class SectionServiceTest {
     public void testGetAll() throws Exception {
         List list = sectionDao.getAll();
         Assert.notNull(list);
+    }
+
+    @Test
+    @Transactional
+    public void testAdd() throws Exception {
+        Section section = new Section();
+        section.setParentId(0);
+        section.setSectionName("LOL");
+        sectionDao.add(section);
     }
 }
