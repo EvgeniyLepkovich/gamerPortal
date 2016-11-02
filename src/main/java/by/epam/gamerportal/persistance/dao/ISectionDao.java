@@ -7,5 +7,5 @@ import java.util.List;
 /**
  * Created by Yayheniy_Lepkovich on 10/31/2016.
  */
-public interface ISectionDao extends IJpaDao {
+public interface ISectionDao extends IJpaDao<Section> {
 }

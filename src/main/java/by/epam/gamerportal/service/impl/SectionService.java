@@ -21,33 +21,4 @@ import java.util.List;
 public class SectionService extends JpaCrudService<Section> implements ISectionService {
     @Autowired
     private SectionDao sectionDao;
-
-//    public Section findById(long id) {
-//        return (Section) sectionDao.findById(id);
-//    }
-//
-//    public List getAll() {
-//        return sectionDao.getAll();
-//    }
-//
-//    @Override
-//    @Transactional
-//    public void add(Section entity) throws DaoException {
-//        sectionDao.add(entity);
-//    }
-//
-//    @Override
-//    public void update(Section entity) {
-//
-//    }
-//
-//    @Override
-//    public void delete(Section entity) {
-//
-//    }
-//
-//    @Transactional
-//    public void deleteById(long id) {
-//        sectionDao.deleteById(id);
-//    }
 }

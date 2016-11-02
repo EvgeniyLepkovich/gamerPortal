@@ -25,6 +25,8 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Yayheniy_Lepkovich on 11/1/2016.
  */
@@ -38,20 +40,50 @@ import org.springframework.transaction.annotation.Transactional;
         DbUnitTestExecutionListener.class
 })
 @DatabaseTearDown(value = "/data/section/section-tear-down.xml")
-public class JpaDaoTest{
+public class SectionDaoTest {
 
     @Autowired
     private SectionService sectionService;
 
-    public JpaDaoTest() {
+    public SectionDaoTest() {
     }
 
     @Test
     @DatabaseSetup(value = "/data/section/section-data.xml")
     public void testFindById(){
-        Section section = sectionService.findById(1);
-        Assert.assertEquals("CS:GO", section.getSectionName());
+        Section section = sectionService.findById(2);
+        Assert.assertEquals("Dota 2", section.getSectionName());
+        Assert.assertEquals(1, section.getArticles().size());
     }
+
+    @Test
+    @DatabaseSetup(value = "/data/section/section-data.xml")
+    public void testGetAll(){
+        List<Section> sections = sectionService.getAll();
+        Assert.assertEquals(2, sections.size());
+        Assert.assertEquals("CS:GO", sections.get(0).getSectionName());
+        Assert.assertEquals("Dota 2", sections.get(1).getSectionName());
+    }
+
+    @Test
+    @DatabaseSetup(value = "/data/section/section-data.xml")
+    @ExpectedDatabase(value = "/data/section/section-expected-update.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
+    public void testUpdate(){
+        Section section = new Section();
+        section.setId(1);
+        section.setParentId(0);
+        section.setSectionName("LOL");
+        section.setDescription("");
+        sectionService.update(section);
+    }
+
+//    @Test
+//    @DatabaseSetup(value = "/data/section/section-data.xml")
+//    @ExpectedDatabase(value = "/data/section/section-expected-remove.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
+//    public void testDelete(){
+//        Section section = sectionService.findById(2);
+//        sectionService.delete(section);
+//    }
 
     @Test
     @DatabaseSetup(value = "/data/section/section-data.xml")

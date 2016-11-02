@@ -3,4 +3,6 @@
     <section id="1" parentId="0" sectionName="CS:GO" description=""/>
     <section id="2" parentId="0" sectionName="Dota 2" description=""/>
     <section id="3" parentId="0" sectionName="LOL" description=""/>
+
+    <article id="1" section_id="2" shortTitle="test" mainTitle="test" text="test" mainPhoto=""/>
 </dataset>

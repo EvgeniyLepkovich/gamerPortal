@@ -1,9 +1,14 @@
 package by.epam.gamerportal.persistance.to;
 
 import lombok.Data;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,6 +27,6 @@ public @Data class Section implements Serializable{
     @Column(name = "description")
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Article> articles;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "section", fetch = FetchType.EAGER)
+    private List<Article> articles;
 }

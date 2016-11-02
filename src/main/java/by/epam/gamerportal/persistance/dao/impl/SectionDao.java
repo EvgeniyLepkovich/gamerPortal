@@ -13,7 +13,7 @@ import java.util.List;
 
 @Repository
 @Scope("prototype")
-public class SectionDao extends JpaDao implements ISectionDao {
+public class SectionDao extends JpaDao<Section> implements ISectionDao {
     public SectionDao(){
         super();
         setEntityClass(Section.class);

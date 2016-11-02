@@ -16,6 +16,7 @@ import java.util.List;
  */
 @Service
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
+@Transactional
 public class JpaCrudService<T> implements IJpaDao<T> {
     @Autowired
     private JpaDao jpaDao;
@@ -31,25 +32,23 @@ public class JpaCrudService<T> implements IJpaDao<T> {
     }
 
     @Override
-    @Transactional
+
     public void add(T entity) throws DaoException {
         jpaDao.add(entity);
     }
 
     @Override
-    @Transactional
     public void update(T entity) {
         jpaDao.update(entity);
     }
 
-    @Override
-    @Transactional
-    public void delete(T entity) {
-        jpaDao.delete(entity);
-    }
+//    @Override
+//    @Transactional
+//    public void delete(T entity) {
+//        jpaDao.delete(entity);
+//    }
 
     @Override
-    @Transactional
     public void deleteById(long id) {
         jpaDao.deleteById(id);
     }

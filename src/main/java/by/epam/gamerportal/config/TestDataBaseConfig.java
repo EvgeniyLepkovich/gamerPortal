@@ -37,23 +37,12 @@ public class TestDataBaseConfig {
     private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "by.epam.gamerportal";
     private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = "create-drop";
 
-//    @Bean
-//    public SectionService sectionService(){
-//        return new SectionService();
-//    }
-//
-//    @Bean
-//    public SectionDao sectionDao(){
-//        return new SectionDao();
-//    }
-
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistence.class);
         entityManagerFactoryBean.setPackagesToScan(PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN);
-//        entityManagerFactoryBean.setPackagesToScan(new String[]{"by.epam.gamerportal.persistance.to", "by.epam.gamerportal.persistance.dao", "by.epam.gamerportal.service"});
         entityManagerFactoryBean.setJpaProperties(hibernateProp());
 
         return entityManagerFactoryBean;

@@ -34,29 +34,26 @@ public abstract class JpaDao<T> implements IJpaDao<T>{
     }
 
     public List<T> getAll(){
-        return entityManager.createQuery("select * from " + entityClass.getName()).getResultList();
+        String className = entityClass.getSimpleName();
+        return entityManager.createQuery("select s from " + className + " s").getResultList();
     }
 
     public void add(T entity) throws DaoException {
-        try {
             entityManager.persist(entity);
-            entityManager.flush();
-        } catch (Exception e){
-            throw new DaoException(e.getMessage(), e);
-        }
     }
 
     public void update(T entity){
         entityManager.merge(entity);
     }
 
-    public void delete(T entity){
-        entityManager.remove(entity);
-        entityManager.flush();
-    }
+//    public void delete(T entity){
+//        entityManager.find(entityClass, entity);
+//        entityManager.remove(entity);
+//    }
 
     public void deleteById(long id){
         T entity = entityManager.find(entityClass, id);
-        delete(entity);
+        entityManager.remove(entity);
+//        delete(entity);
     }
 }

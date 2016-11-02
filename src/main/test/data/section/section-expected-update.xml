@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <section id="1" parentId="0" sectionName="CS:GO" description=""/>
+    <section id="1" parentId="0" sectionName="LOL" description=""/>
     <section id="2" parentId="0" sectionName="Dota 2" description=""/>
 
     <article id="1" section_id="2" shortTitle="test" mainTitle="test" text="test" mainPhoto=""/>
