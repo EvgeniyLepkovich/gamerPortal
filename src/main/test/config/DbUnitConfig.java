@@ -10,12 +10,10 @@ import org.junit.Before;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 
-import java.io.IOException;
-
 /**
  * Created by Yayheniy_Lepkovich on 11/1/2016.
  */
-@PropertySource(value = "classpath:dbtest.properties")
+@PropertySource(value = "classpath:db.properties")
 public class DbUnitConfig extends DBTestCase {
     protected IDatabaseTester tester;
     protected IDataSet beforeData;

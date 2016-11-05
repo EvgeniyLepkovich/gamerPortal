@@ -27,6 +27,7 @@ public class SectionRestController {
 
     @RequestMapping("/")
     public ModelAndView index(){
+        Section section = sectionService.findById(2);
         return new ModelAndView("index");
     }
 
