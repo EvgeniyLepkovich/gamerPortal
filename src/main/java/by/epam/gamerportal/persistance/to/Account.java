@@ -13,19 +13,19 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name = "acount")
+@Table(name = "account")
 public @Data class Account implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name = "login", nullable = false)
-    private String login;
+    @Column(name = "username", nullable = false)
+    private String username;
     @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "mail", nullable = false)
     private String mail;
     @OneToOne(optional = false)
-    @JoinColumn(name="profileID", unique = true, nullable = false)
+    @JoinColumn(name="profileID", unique = true, nullable = true)
     private Profile profile;
     @ManyToMany
     @JoinTable(name="AccountRole",

@@ -45,7 +45,7 @@ public class ProductionDataBaseConfig extends DataBase{
         return super.transactionManager(hibernateProp(dialect, show_sql, hbm2ddl_auto), dataSourceProp(driver, url, username, password));
     }
 
-    @Bean
+    @Bean("prod_ds")
     @Primary
     public DataSource dataSource(){
         return super.dataSource(dataSourceProp(driver, url, username, password));

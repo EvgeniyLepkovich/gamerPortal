@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
  * Created by Yayheniy_Lepkovich on 11/3/2016.
  */
 @SpringBootApplication
+@Import({SecurityConfig.class})
 public class AppConfiguration extends SpringBootServletInitializer {
 //    @Autowired
 //    ProductionDataBaseConfig productionDataBaseConfig;
