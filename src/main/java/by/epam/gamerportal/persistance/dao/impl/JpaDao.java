@@ -4,6 +4,7 @@ import by.epam.gamerportal.persistance.dao.IJpaDao;
 import by.epam.gamerportal.persistance.exception.DaoException;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,7 @@ import java.util.List;
 public abstract class JpaDao<T> implements IJpaDao<T>{
     @Setter @Getter
     @PersistenceContext
+    @Qualifier("prod_entity")
     private EntityManager entityManager;
 
     @Setter

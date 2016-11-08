@@ -17,17 +17,18 @@ import java.util.Collection;
 
 @RestController
 public class SectionRestController {
-    @Autowired
-    SectionService sectionService;
-
-    @RequestMapping(method = RequestMethod.GET)
-    public Collection<Section> readSections(){
-        return sectionService.getAll();
-    }
-
-    @RequestMapping("/")
-    public ModelAndView index(){
-        return new ModelAndView("index");
-    }
+//    @Autowired
+//    SectionService sectionService;
+//
+//    @RequestMapping(method = RequestMethod.GET)
+//    public Collection<Section> readSections(){
+//        return sectionService.getAll();
+//    }
+//
+//    @RequestMapping("/")
+//    public ModelAndView index(){
+//        Section section = sectionService.findById(2);
+//        return new ModelAndView("index");
+//    }
 
 }

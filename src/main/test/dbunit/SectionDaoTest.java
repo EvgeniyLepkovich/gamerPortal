@@ -77,14 +77,6 @@ public class SectionDaoTest {
         sectionService.update(section);
     }
 
-//    @Test
-//    @DatabaseSetup(value = "/data/section/section-data.xml")
-//    @ExpectedDatabase(value = "/data/section/section-expected-remove.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
-//    public void testDelete(){
-//        Section section = sectionService.findById(2);
-//        sectionService.delete(section);
-//    }
-
     @Test
     @DatabaseSetup(value = "/data/section/section-data.xml")
     @ExpectedDatabase(value = "/data/section/section-expected-add.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
